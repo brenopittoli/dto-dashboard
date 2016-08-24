@@ -11,28 +11,21 @@ module.exports = function(config) {
       os: 'Windows',
       os_version: '10',
       browser: 'chrome',
-      browser_version: '47.0'
+      browser_version: 'latest'
     },
     BS_Firefox: {
       base: 'BrowserStack',
       os: 'Windows',
       os_version: '10',
       browser: 'firefox',
-      browser_version: '43.0'
+      browser_version: 'latest'
     },
     BS_Safari: {
       base: 'BrowserStack',
       os: 'OS X',
       os_version: 'El Capitan',
       browser: 'safari',
-      browser_version: '9.0'
-    },
-    BS_MobileSafari8: {
-      base: 'BrowserStack',
-      os: 'ios',
-      os_version: '8.3',
-      browser: 'iphone',
-      real_mobile: false
+      browser_version: 'latest'
     },
     BS_MobileSafari9: {
       base: 'BrowserStack',
@@ -61,7 +54,7 @@ module.exports = function(config) {
       base: 'Chrome',
       flags: ['--no-sandbox']
     }
-  }
+  };
 
   config.set({
 
