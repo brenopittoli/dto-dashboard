@@ -1,14 +1,74 @@
-var path = require('path');
+const path = require('path');
+const projectName = require('./package').name;
 
-// Karma configuration
-// Generated on Tue Aug 23 2016
 
 module.exports = function(config) {
+
+  const customLaunchers = {
+    // Browsers to run on BrowserStack.
+    BS_Chrome: {
+      base: 'BrowserStack',
+      os: 'Windows',
+      os_version: '10',
+      browser: 'chrome',
+      browser_version: '47.0'
+    },
+    BS_Firefox: {
+      base: 'BrowserStack',
+      os: 'Windows',
+      os_version: '10',
+      browser: 'firefox',
+      browser_version: '43.0'
+    },
+    BS_Safari: {
+      base: 'BrowserStack',
+      os: 'OS X',
+      os_version: 'El Capitan',
+      browser: 'safari',
+      browser_version: '9.0'
+    },
+    BS_MobileSafari8: {
+      base: 'BrowserStack',
+      os: 'ios',
+      os_version: '8.3',
+      browser: 'iphone',
+      real_mobile: false
+    },
+    BS_MobileSafari9: {
+      base: 'BrowserStack',
+      os: 'ios',
+      os_version: '9.1',
+      browser: 'iphone',
+      real_mobile: false
+    },
+    BS_InternetExplorer10: {
+      base: 'BrowserStack',
+      os: 'Windows',
+      os_version: '8',
+      browser: 'ie',
+      browser_version: '10.0'
+    },
+    BS_InternetExplorer11: {
+      base: 'BrowserStack',
+      os: 'Windows',
+      os_version: '10',
+      browser: 'ie',
+      browser_version: '11.0'
+    },
+
+    // The ancient Travis Chrome that most projects use in CI.
+    ChromeCi: {
+      base: 'Chrome',
+      flags: ['--no-sandbox']
+    }
+  }
+
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: __dirname,
 
+    customLaunchers: customLaunchers,
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -22,15 +82,14 @@ module.exports = function(config) {
 
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'node_modules/d3-charts-dto/**/*.js': [ 'browserify' ],
-      'spec/javascripts/index.js': [ 'browserify' ]
+      'node_modules/d3-charts-dto/**/*.js': ['browserify'],
+      'spec/javascripts/index.js': ['browserify']
     },
 
     browserify: {
@@ -78,5 +137,20 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+
+
+  if (process.env.USE_CLOUD) {
+    config.browserStack = {};
+    config.browserStack.username = process.env.BROWSER_STACK_USERNAME;
+    config.browserStack.accessKey = process.env.BROWSER_STACK_ACCESS_KEY;
+    config.browserStack.project = projectName;
+
+    config.browsers = Object.keys(customLaunchers);
+    config.concurrency = 2;
+
+    config.browserDisconnectTimeout = 10000;
+    config.browserDisconnectTolerance = 3;
+  }
+
+};

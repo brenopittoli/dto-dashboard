@@ -20,14 +20,8 @@ Currently WIP.
 The default database config assumes you have installed Postgres via Homebrew.
 You should need no further config.
 
-Otherwise, create a `.env` file in the Rails directory and populate with the relevant credentials.
+Otherwise, create a `.env` file in the Rails directory and populate with the relevant credentials. Refer to .env.sample.
 
-```
-DB_HOST = '127.0.0.1'
-DB_USER_NAME = 'dashboard'
-DB_PWD = 'password'
-GA_UA_CODE = 'UA-61222473-3'
-```
 
 If you don't have Bundler installed
 ```
