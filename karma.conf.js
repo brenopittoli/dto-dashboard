@@ -47,12 +47,6 @@ module.exports = function(config) {
       os_version: '10',
       browser: 'ie',
       browser_version: '11.0'
-    },
-
-    // The ancient Travis Chrome that most projects use in CI.
-    ChromeCi: {
-      base: 'Chrome',
-      flags: ['--no-sandbox']
     }
   };
 
