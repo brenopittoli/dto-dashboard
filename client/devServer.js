@@ -18,7 +18,8 @@ for(let [key, value] of Object.entries(webpackConfig.entry)) {
 	}
 	value.unshift(
 		`webpack-dev-server/client?${devServerPublicPath}`,
-		'webpack/hot/dev-server'    // webpack/hot/only-dev-server
+		'webpack/hot/dev-server',    // reload if HMR fails
+    // './../../client/src/dashboard'
 	);
 }
 
