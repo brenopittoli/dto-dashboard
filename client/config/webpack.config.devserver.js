@@ -10,13 +10,18 @@ let webpackConfig = {
 	name: projectName,
 	bail: true,
 	debug: true,
-	devtool: 'eval',        // better sourcemaps -> cheap-module-eval-source-map
+	devtool: 'eval',        // need sourcemaps? -> cheap-module-eval-source-map
 	context: CONFIG.DIR_SRC,
   entry: {
     ['dashboard']: [`./dashboard`],
   },
 	output: {
 		path: CONFIG.DIR_DIST,
+    // Add /* filename */ comments to generated require()s in the output.
+    pathinfo: true,
+    // This does not produce a real file. It's just the virtual path that is
+    // served by WebpackDevServer in development. This is the JS bundle
+    // containing code from all our entry points, and the Webpack runtime.
 		filename: 'javascripts/[name].js',       // relative     - determines output file
     publicPath:  `/`,     // Web root. publicPath + filename must equal resource path in dev server
 		// publicPath:  `http://${CONFIG.HOST}:${CONFIG.PORT}/`

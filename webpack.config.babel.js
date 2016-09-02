@@ -3,7 +3,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 
-import * as CONFIG from './client/_config';
+import * as CONFIG from './client/config/_config';
 const projectName = require('./package').name;
 const DEBUG = !process.argv.includes('--release');
 
@@ -45,12 +45,16 @@ let webpackConfig = {
     ],
     loaders: [
       {
-        test: /\.(js|json)$/,
+        test: /\.(js)$/,
         loaders: ['babel'],
         exclude: [
           CONFIG.DIR_NPM,
           CONFIG.DIR_TEST
         ],
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
       },
       {
         test: /\.(scss|css)$/,

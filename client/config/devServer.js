@@ -19,7 +19,7 @@ for(let [key, value] of Object.entries(webpackConfig.entry)) {
 	value.unshift(
 		`webpack-dev-server/client?${devServerPublicPath}`,
 		'webpack/hot/dev-server',    // reload if HMR fails
-    // './../../client/src/dashboard'
+    // app code is not required here because it exists in webpack.config already
 	);
 }
 
