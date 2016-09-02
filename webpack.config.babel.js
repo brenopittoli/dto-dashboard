@@ -8,6 +8,10 @@ const projectName = require('./package').name;
 const DEBUG = !process.argv.includes('--release');
 
 
+if (!DEBUG) {
+   console.log('PREPARING FOR PRODUCTION.');
+}
+
 let ExtractSass = new ExtractTextPlugin("stylesheets/[name].css", {
   publicPath: CONFIG.DIR_DIST,
   allChunks: false
@@ -101,12 +105,24 @@ let webpackConfig = {
       CONFIG.DIR_SRC,
       CONFIG.DIR_NPM
     ],
-    sourceMap: true,
-    lineNumbers: true,
+    sourceMap: DEBUG,
+    lineNumbers: DEBUG,
     bundleExec: true,
     data: `$env:  ${CONFIG.ENV === 'production' ? 'production' : 'development'};`
   }
 };
+
+if (!DEBUG) {
+  webpackConfig.plugins.push(
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  )
+}
 
 
 export default webpackConfig;
