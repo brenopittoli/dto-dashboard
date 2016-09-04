@@ -32,7 +32,7 @@
 }
 
 .aus-width-one-third {
-  @include span-columns(12);
+  @include span-columns(4);
 
   @include media($screen-sm) {
     @include span-columns(6);
@@ -257,5 +257,27 @@ dd {
         display: table-cell;
       }
     }
+  }
+
+.metrics {
+  padding-bottom: 30px;
+  .widget__title {
+    margin-bottom: 25px;
+  }
+
+  #user-satisfaction.widget__title {
+    border-bottom: 5px solid #f2b038;
+  }
+
+  #cost-per-transaction.widget__title {
+    border-bottom: 5px solid #75a370;
+  }
+
+  #digital-take-up.widget__title {
+    border-bottom: 5px solid #4892c0;
+  }
+
+  #completion-rate.widget__title {
+    border-bottom: 5px solid #7066a5;
   }
 }

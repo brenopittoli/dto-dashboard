@@ -3,14 +3,6 @@
   border-bottom: 3px solid $black;
   margin-bottom: 40px;
   margin-top: $spacing-unit;
-
-  @include media(768px) {
-    @include span-columns(12);
-  }
-
-  @include media(1200px) {
-    @include span-columns(6);
-  }
 }
 
 .dashboard__top {
