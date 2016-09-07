@@ -68,10 +68,10 @@ let webpackConfig = {
         test: /\.(jpe?g|gif|png|svg)$/,
         loader: "file?name=images/[name].[ext]"
       },
-      {
-        test: /\.(eot|ttf|woff|svg|woff2)$/,
-        loader: "url?limit=10000&name=fonts/[name].[ext]"
-      }
+      // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
+      //   test: /\.(eot|ttf|woff|svg|woff2)$/,
+      //   loader: "url?limit=10000&name=fonts/[name].[ext]"
+      // }
     ]
   },
   // Add functionality typically related to bundles in webpack
