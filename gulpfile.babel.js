@@ -40,6 +40,7 @@ const jsSource = {
     name: 'dev',
     entry: DIR_SRC_SCRIPTS,
     build: 'index.js',
+    build: 'toggle-high-contrast.js',
     dest: DIR_DIST_SCRIPTS
   },
 };

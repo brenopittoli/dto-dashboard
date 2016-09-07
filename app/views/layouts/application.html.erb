@@ -77,5 +77,8 @@
   <% else %>
     <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% end %>
+  <% if display_high_contrast_mode? %>
+    <script src="<%= javascript_path('toggle-high-contrast.js') %>"></script>
+  <% end %>
 </body>
 </html>
