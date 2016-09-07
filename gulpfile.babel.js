@@ -31,9 +31,9 @@ export const DIR_DIST_TEST = path.join(DIR_TEST, '.tmp');
 // export const DIR_SRC_STYLES = path.join(DIR_SRC, 'styles');
 export const DIR_SRC_SCRIPTS = path.join(DIR_SRC, 'scripts');
 // export const DIR_SRC_IMAGES = path.join(DIR_SRC, 'images');
-// export const DIR_DIST_STYLES = path.join(DIR_DIST, 'stylesheets');
+export const DIR_DIST_STYLES = path.join(DIR_DIST, 'stylesheets');
 export const DIR_DIST_SCRIPTS = path.join(DIR_DIST, 'javascripts');
-// export const DIR_DIST_IMAGES = path.join(DIR_DIST, 'images');
+export const DIR_DIST_IMAGES = path.join(DIR_DIST, 'images');
 
 const jsSource = {
   dev: {
@@ -137,7 +137,9 @@ function clean(files, done) {
 
 gulp.task('clean', (done) => {
   return clean([
-    DIR_DIST_SCRIPTS + '/**/*' // don't remove the folder
+    DIR_DIST_STYLES + '/**/*', // don't remove the folder
+    DIR_DIST_SCRIPTS + '/**/*', // don't remove the folder
+    DIR_DIST_IMAGES + '/**/*' // don't remove the folder
   ], done);
 });
 
