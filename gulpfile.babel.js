@@ -15,16 +15,8 @@ import source from 'vinyl-source-stream';
 import transform from 'vinyl-transform';
 import watchify from 'watchify';
 
-// import sourcemaps from 'gulp-sourcemaps';
-// import eslintify from 'eslintify';
-// import changed from 'gulp-changed';
 import print from 'gulp-print';
 import gutil from 'gulp-util';
-// import sass from 'gulp-sass';
-// import sassLint from 'gulp-sass-lint';
-// import autoprefixer from 'gulp-autoprefixer';
-// import bourbon from 'bourbon';
-// import bourbonNeat from 'bourbon-neat';
 
 
 
