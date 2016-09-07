@@ -1,4 +1,4 @@
-class DashboardsController < ApplicationController
+class DashboardsController < AuthenticatedController
 
   attr_reader :dashboards, :dashboard, :widgets
   helper_method :dashboards, :dashboard
@@ -11,7 +11,7 @@ class DashboardsController < ApplicationController
 
   def show
     @dashboard = Dashboard.find(params[:id]).decorate
-    
+
     @title = @dashboard.name
     @description = @dashboard.name
 
