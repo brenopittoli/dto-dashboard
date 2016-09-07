@@ -66,7 +66,7 @@ let webpackConfig = {
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
-        loader: "file?name=images/[name].[ext]"
+        loader: "file?name=/images/[name].[ext]"
       },
       // {  // todo - enable if we have fonts - must prefix regex with fonts/ and images with images/
       //   test: /\.(eot|ttf|woff|svg|woff2)$/,
