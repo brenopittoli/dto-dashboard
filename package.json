@@ -93,9 +93,11 @@
     "webpack-dev-server": "^1.15.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production gulp build",
-    "dev": "gulp watch",
-    "start": "echo 'No start tast, use 'npm run dev' or 'npm run build''",
+    "build": "NODE_ENV=production npm run gulp:build && npm run webpack:build:production",
+    "dev": "echo 'No dev tast, use 'npm run gulp:dev' or 'npm run webpack:dev'",
+    "gulp:build": "NODE_ENV=production gulp build",
+    "gulp:dev": "gulp watch",
+    "start": "echo 'No start tast, use 'npm run' to see options, you probably want 'npm run build'",
     "test": "npm run test-browser && npm run test-browser:legacy",
     "pretest-browser": "gulp clean:tests",
     "test-browser": "NODE_ENV=test ava 'client/test/**/*.test.js' --require=babel-register",
