@@ -46,7 +46,7 @@ let webpackConfig = {
 			},
 			{
         test: /\.(scss)$/,
-				loader: 'style!css?&sourceMap!postcss!sass?sourceMap'
+				loader: 'style!css?&sourceMap!postcss!resolve-url!sass?sourceMap'
 			},
 			{
 				test: /\.(jpe?g|gif|png|svg)$/,
