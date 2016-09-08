@@ -1,8 +1,69 @@
 .dashboards-intro {
+  @include span-columns(8)
   clear: both;
-  border-bottom: 3px solid $black;
   margin-bottom: 40px;
   margin-top: $spacing-unit;
+}
+
+.metrics {
+  .button-row {
+    @include span-columns(8 of 8);
+    text-align: center;
+    clear: both;
+    margin: auto;
+  }
+}
+
+.metric-definitions__metric {
+  @include span-columns(2 of 8);
+}
+
+.dashboards-intro-sec {
+  @include span-columns(4)
+  display: flex;
+  margin-top: 30px;
+  padding-left: 144px;
+  color: #224A61;
+
+  .number-of-dashboards {
+    font-size: 80px;
+    line-height: 68px;
+    float:right;
+    padding-right: 10px;
+    font-weight: bold;
+  }
+
+  span:not(.number-of-dashboards) {
+    font-size: 30px;
+    line-height: 36px;
+    float:right;
+  }
+}
+
+.metric-definitions {
+  margin-right: 0 !important;
+  @include span-columns(8);
+
+  .metric-definitions__metric:last-child {
+    margin-right: 0;
+  }
+
+  .last {
+    margin-right: 0;
+  }
+}
+
+.metric-definitions__metric {
+  h4 {
+    margin-top: 0;
+  }
+  max-height:300px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  content: "";
+  background: -webkit-linear-gradient(#000, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .dashboard__top {
