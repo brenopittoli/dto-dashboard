@@ -1,4 +1,4 @@
-import { select, selectAll } from 'd3-selection';
+import { selectAll } from 'd3-selection';
 
 import { getDatasetsByWidgetId } from './../reducers/datasets';
 
@@ -13,7 +13,7 @@ import stackByPercentage from './../legacy-components/Helpers/stackByPercentage'
 
 const C_HEIGHT = 150;
 
-class LegacyDashboardShow {
+class LegacyDashboardsShow {
 
   // charts: [];
 
@@ -32,7 +32,6 @@ class LegacyDashboardShow {
 
       switch (w.type) {
         case 'line':
-
           el.each(function() {
             chartData = convertDataForLine(datasets);
 
@@ -145,7 +144,30 @@ class LegacyDashboardShow {
           break;
 
         case 'sparkline':
-          chartData = convertData(datasets);
+          el.each(function() {
+            chartData = null;
+            if (datasets[0].data) {
+              chartData = convertData(datasets);
+            }
+
+            let options = {
+              element: el,
+              data: chartData,
+              prefix: w.prefix,
+              suffix: w.suffix,
+              units: w.units,
+              displayRoundedData: w.displayRoundedData,
+              isHighContrastMode: window.localStorage.getItem('high_contrast_mode') === 'on'
+            };
+
+            new SparklineWidget(options);
+            // sparkline = new SparklineWidget(options);
+            // self.charts.push(sparkline);
+          });
+
+          break;
+
+        case 'kpi-sparkline':
           el.each(function() {
             chartData = null;
             if (datasets[0].data) {
@@ -175,4 +197,4 @@ class LegacyDashboardShow {
 
 }
 
-export default LegacyDashboardShow;
+export default LegacyDashboardsShow;
