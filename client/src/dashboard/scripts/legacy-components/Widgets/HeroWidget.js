@@ -1,7 +1,6 @@
 import d3 from 'd3';
 import _ from 'lodash';
 
-//import BenchMark from 'Charts/BenchMark.js';
 import LineChart from './../../_vendor/d3-charts-dto/Charts/LineChart.js';
 import NullDataLayer from './../../_vendor/d3-charts-dto/Charts/NullDataLayer.js';
 import OverlayLayer from './../../_vendor/d3-charts-dto/Charts/OverlayLayer.js';
@@ -21,7 +20,6 @@ class HeroWidget {
     this.props = {
       engagementCount: 0
     };
-
     this.options = options;
     this.margin = options.margin;
     this.data = options.data;

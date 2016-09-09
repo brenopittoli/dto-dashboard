@@ -19,12 +19,9 @@ const DASHBOARDS_INDEX_ROUTE = 'dashboards_index';
 const DASHBOARDS_SHOW_ROUTE = 'dashboards_show';
 
 
-let DashboardsIndexView = new DashboardsIndex(store);
-let DashboardsShowView = new DashboardsShow(store);
-
 
 domready(() => {
-
+  let view = {};
   let _widgetsData = [];
 
   const getRoute = () => {
@@ -36,6 +33,8 @@ domready(() => {
 
   switch (currentRoute) {
     case DASHBOARDS_INDEX_ROUTE:
+
+      view = new DashboardsIndex(store);
 
       selectAll('.kpi-sparkline .widget__inner').each(function () {
         _widgetsData.push(JSON.parse(this.getAttribute('data-data')));
@@ -52,16 +51,21 @@ domready(() => {
       store.dispatch(createWidgets(_widgetsData));
 
 
-      new DashboardsIndexView.render(store.getState());
+      view.render(store.getState());
 
       break;
 
 
     case DASHBOARDS_SHOW_ROUTE:
 
-      selectAll('.kpi-sparkline .widget__inner').each(function () {
-        _widgetsData.push(JSON.parse(this.getAttribute('data-data')));
-      });
+      view = new DashboardsShow(store);
+
+      // selectAll('.hero').each(function () {  // todo - hero chart has random data schema
+      //   _widgetsData.push(JSON.parse(this.getAttribute('data-data')));
+      // });
+      // selectAll('.kpi-sparkline .widget__inner').each(function () {
+      //   _widgetsData.push(JSON.parse(this.getAttribute('data-data')));
+      // });
       selectAll('.bar .widget__inner').each(function () {
         _widgetsData.push(JSON.parse(this.getAttribute('data-data')));
       });
@@ -80,19 +84,20 @@ domready(() => {
 
       // serialize
       _widgetsData.forEach((w) => {
-        w.datasets.forEach((d) => {
-          d.widget_id = w.id;
-        });
+        if (w.datasets) {
+          w.datasets.forEach((d) => {
+            d.widget_id = w.id;
+          });
+        }
         store.dispatch(createDatasets(w.datasets));
         // delete w.datasets; // todo - shitty old data transformation code needs this
       });
       store.dispatch(createWidgets(_widgetsData));
 
 
-      new DashboardsShowView.render(store.getState());
+      view.render(store.getState());
 
       break;
   }
 
 });
-

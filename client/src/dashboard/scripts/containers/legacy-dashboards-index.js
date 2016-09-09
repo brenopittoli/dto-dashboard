@@ -8,9 +8,8 @@ import SparklineWidget from './../legacy-components/Widgets/SparklineWidget';
 
 class LegacyDashboardsIndex {
 
-  // charts: [];
-
-  constructor(store) {
+  constructor() {
+    return this;
   }
 
   render(props) {
@@ -24,30 +23,29 @@ class LegacyDashboardsIndex {
       let datasets = getDatasetsByWidgetId(self.props.datasets, w.id);
 
       switch (w.type) {
+        case 'kpi-sparkline':
+          el.each(function() {
+            chartData = null;
+            if (datasets[0].data) {
+              chartData = convertData(datasets);
+            }
 
-        // case 'kpi-sparkline':
-        //   el.each(function() {
-        //     chartData = null;
-        //     if (datasets[0].data) {
-        //       chartData = convertData(datasets);
-        //     }
-        //
-        //     let options = {
-        //       element: el,
-        //       data: chartData,
-        //       prefix: w.prefix,
-        //       suffix: w.suffix,
-        //       units: w.units,
-        //       displayRoundedData: w.displayRoundedData,
-        //       isHighContrastMode: window.localStorage.getItem('high_contrast_mode') === 'on'
-        //     };
-        //
-        //     new SparklineWidget(options);
-        //     // sparkline = new SparklineWidget(options);
-        //     // self.charts.push(sparkline);
-        //   });
-        //
-        //   break;
+            let options = {
+              element: el,
+              data: chartData,
+              prefix: w.prefix,
+              suffix: w.suffix,
+              units: w.units,
+              displayRoundedData: w.displayRoundedData,
+              isHighContrastMode: window.localStorage.getItem('high_contrast_mode') === 'on'
+            };
+
+            new SparklineWidget(options);
+            // sparkline = new SparklineWidget(options);
+            // self.charts.push(sparkline);
+          });
+
+          break;
       }
     });
     return this;

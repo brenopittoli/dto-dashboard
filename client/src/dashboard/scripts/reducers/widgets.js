@@ -41,3 +41,6 @@ export default widgetsReducer;
 
 // Helpers
 
+export const getWidgetsByType = (state, type) => {
+  return state.filter((w) => w.type === type);
+};
