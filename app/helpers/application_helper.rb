@@ -4,18 +4,16 @@ module ApplicationHelper
   # Params:
   # - class_names: String of class names to append to class names string
   def body_route
-    self.controller_name + '_' + self.action_name
+    "#{controller_name}_#{action_name}"
   end
 
   # Sets the body class on a per-page basis
   # Params:
-  # - class_names: String of class names to append to class names string
-  def body_class(class_names)
-    class_name_str = body_route
-    if !class_names.empty?
-      class_name_str << ' ' + class_names
-    end
-    return class_name_str
+  # - class_names: {Array} Array of additional class names to append to body class
+  # names
+  def body_class(names)
+    class_names = [body_route] << names
+    class_names.flatten.join(' ')
   end
 
   def display_high_contrast_mode?
