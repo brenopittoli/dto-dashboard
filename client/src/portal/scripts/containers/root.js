@@ -22,8 +22,8 @@ export default class Root extends Component {
         <Router history={history}>
           <Route path="/" component={Layout}>
             <IndexRedirect to="dashboards" />
-            <Route path="dashboards" component={Dashboards} store={store} />
-            <Route path="dashboard/:id" component={Dashboard} store={store} />
+            <Route path="dashboards" component={Dashboards} />
+            <Route path="dashboard/:id" component={Dashboard} />
             <Route path="*" component={NoMatch}/>
           </Route>
         </Router>
