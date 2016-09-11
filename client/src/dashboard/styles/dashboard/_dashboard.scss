@@ -23,12 +23,12 @@
   display: flex;
   margin-top: 30px;
   padding-left: 144px;
-  color: #224A61;
+  color: $gov-au-brand-colour;
 
   .number-of-dashboards {
     font-size: 80px;
     line-height: 68px;
-    float:right;
+    float: right;
     padding-right: 10px;
     font-weight: bold;
   }
@@ -36,7 +36,7 @@
   span:not(.number-of-dashboards) {
     font-size: 30px;
     line-height: 36px;
-    float:right;
+    float: right;
   }
 }
 
@@ -54,16 +54,17 @@
 }
 
 .metric-definitions__metric {
-  h4 {
-    margin-top: 0;
-  }
   max-height:300px;
   overflow:hidden;
   text-overflow: ellipsis;
   content: "";
-  background: -webkit-linear-gradient(#000, #fff);
+  background: -webkit-linear-gradient($black, $white);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  h4 {
+    margin-top: 0;
+  }
 }
 
 .dashboard__top {
