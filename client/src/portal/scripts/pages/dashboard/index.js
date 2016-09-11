@@ -7,10 +7,8 @@ import { getDashboardById } from './../../reducers/dashboards'
 const mapStateToProps = ({dashboards}, ownProps) => ({
   dashboard: getDashboardById(dashboards, ownProps.params.id)
 });
+const mapDispatchToProps = null;
 
-const mapDispatchToProps = dispatch => ({
-  // onSubmit: bindActionCreators(saveForm, dispatch)
-});
 class DashboardIndex extends Component {
 
   render() {
