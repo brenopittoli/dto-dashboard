@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 
-const mapStateToProps = ({dashboards}, ownProps) => ({
+const mapStateToProps = ({dashboards}) => ({
   dashboards
 });
 
