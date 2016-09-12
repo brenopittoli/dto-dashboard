@@ -5,14 +5,20 @@ import app from './app';
 import ui from './ui';
 import currentUser from './currentUser';
 import dashboards from './dashboards';
+import widgets from './widgets';
+import datasets from './datasets';
+import { reducer as formReducer } from 'redux-form';
 
 
 const rootReducer = combineReducers({
   routing: routerReducer,
   app,
   ui,
+  form: formReducer,
   currentUser,
-  dashboards
+  dashboards,
+  widgets,
+  datasets
 });
 
 export default rootReducer;

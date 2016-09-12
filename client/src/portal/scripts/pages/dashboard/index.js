@@ -1,24 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { getDashboardById } from './../../reducers/dashboards'
+import { getDashboardById } from './../../reducers/dashboards';
+import { getWidgetsByDashboardId } from './../../reducers/widgets';
 
 
-const mapStateToProps = ({dashboards}, ownProps) => ({
-  dashboard: getDashboardById(dashboards, ownProps.params.id)
+const mapStateToProps = ({dashboards, widgets}, ownProps) => ({
+  dashboard: getDashboardById(dashboards, ownProps.params.dashboard_id),
+  widgets: getWidgetsByDashboardId(widgets, ownProps.params.dashboard_id)
 });
 const mapDispatchToProps = null;
 
 class DashboardIndex extends Component {
 
   render() {
-    let { dashboard } = this.props;
-
+    let { dashboard, widgets } = this.props;
     return (
       <div>
-        <h1>{dashboard.title}</h1>
-
-        <Link to={`/dashboard/${dashboard.id}/edit`}>Edit</Link>
+        <h2>Dashboard: {dashboard.name}</h2>
+        {widgets.map((w, idx) => {
+          return <li key={idx}><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`}>{w.name}</Link></li>
+        })}
       </div>
     )
   }

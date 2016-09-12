@@ -6,4 +6,6 @@ export default {
     // formEditDashboard: {}
   },
   dashboards: [],
+  widgets: [],
+  datasets: []
 };

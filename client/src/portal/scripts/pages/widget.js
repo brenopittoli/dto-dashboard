@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 
 
-class Dashboards extends Component {
+class Widget extends Component {
   render() {
     return (
       <div>
@@ -11,4 +11,5 @@ class Dashboards extends Component {
   }
 }
 
-export default Dashboards;
+export default Widget;
+
