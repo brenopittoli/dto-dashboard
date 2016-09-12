@@ -1,14 +1,28 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 
-class Dashboards extends Component {
+const mapStateToProps = (store, ownProps) => ({
+  dashboards: ownProps.dashboards
+});
+const mapDispatchToProps = dispatch => ({});
+
+class DashboardsIndex extends Component {
   render() {
+    let { dashboards } = this.props;
     return (
       <div>
-        {this.props.children}
+        <h1>Dashboards</h1>
+        {dashboards.map((d, idx) => {
+          return <li key={idx}><Link to={`/dashboards/${d.id}`}>{d.id} - {d.name}</Link></li>
+        })}
       </div>
     )
   }
 }
 
-export default Dashboards;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DashboardsIndex);

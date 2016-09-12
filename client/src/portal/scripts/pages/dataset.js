@@ -1,15 +1,26 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { getDatasetById } from './../reducers/datasets';
 
 
-class Dataset extends Component {
+const mapStateToProps = ({datasets}, ownProps) => ({
+  dataset: ownProps.dataset
+});
+const mapDispatchToProps = dispatch => ({});
+
+class DatasetIndex extends Component {
   render() {
+    let { dataset } = this.props;
     return (
       <div>
-        {this.props.children}
+        <h1>Dataset: {dataset.name}</h1>
       </div>
     )
   }
 }
 
-export default Dataset;
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DatasetIndex);
