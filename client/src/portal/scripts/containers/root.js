@@ -12,6 +12,8 @@ import DashboardsPage from './../pages/dashboards';
 import DashboardPage from './../pages/dashboard';
 import DashboardWidgetPage from './../pages/dashboardWidget';
 import DatasetPage from './../pages/dataset';
+import DatasetDatapointPage from './../pages/datasetDatapoint';
+import DatasetDatapointCreatePage from './../pages/datasetDatapointCreate';
 
 import NoMatch from './../pages/no-match';
 
@@ -32,10 +34,12 @@ export default class Root extends Component {
 
             /*
 
-            dashboards
-            dashboards/1
-            dashboards/1/widgets/1
-            datasets/id
+             dashboards
+             dashboards/1
+             dashboards/1/widgets/1
+             datasets/id
+             datasets/id/datapoints/1
+             datasets/id/datapoints/new
 
              */
 
@@ -51,8 +55,8 @@ export default class Root extends Component {
 
             <Route path="datasets/:dataset_id" component={Dataset}>
               <IndexRoute component={DatasetPage} />
-              {/*<Route path="datapoints/:datapoint_id" component={DatasetDatapointPage} />*/}
-              {/*<Route path="datapoints/new" component={DatasetDatapointCreatePage} />*/}
+              <Route path="datapoints/:datapoint_id" component={DatasetDatapointPage} />
+              <Route path="datapoints-new" component={DatasetDatapointCreatePage} />
             </Route>
 
             <Route path="*" component={NoMatch} />
