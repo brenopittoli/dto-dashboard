@@ -12,6 +12,7 @@ const mapStateToProps = ({dashboards, widgets}, ownProps) => {
   }
 };
 const mapDispatchToProps = dispatch => ({});
+
 class Dashboard extends Component {
   render() {
     return (

@@ -49,8 +49,10 @@ export default class Root extends Component {
               </Route>
             </Route>
 
-            <Route path="datasets/:id" component={Dataset}>
+            <Route path="datasets/:dataset_id" component={Dataset}>
               <IndexRoute component={DatasetPage} />
+              {/*<Route path="datapoints/:datapoint_id" component={DatasetDatapointPage} />*/}
+              {/*<Route path="datapoints/new" component={DatasetDatapointCreatePage} />*/}
             </Route>
 
             <Route path="*" component={NoMatch} />

@@ -14,9 +14,21 @@ class DashboardsIndex extends Component {
     return (
       <div>
         <h1>Dashboards</h1>
-        {dashboards.map((d, idx) => {
-          return <li key={idx}><Link to={`/dashboards/${d.id}`}>{d.id} - {d.name}</Link></li>
-        })}
+        <table>
+          <thead>
+            <tr>
+              <td>ID</td><td>Name</td>
+            </tr>
+          </thead>
+          <tbody>
+            {dashboards.map((d, idx) => (
+              <tr key={idx}>
+                <td>{d.id}</td><td>{d.name}</td><td><Link to={`/dashboards/${d.id}`}>Edit</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
       </div>
     )
   }
