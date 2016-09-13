@@ -16,3 +16,7 @@ export default datasetsReducer;
 export const getDatasetById = (state, id) => {
   return state.find((d) => Number(id) === d.id);
 };
+
+export const getDatasetsByIds = (state, ids) => {
+  return state.filter((d) => ids.includes(d.id));
+};

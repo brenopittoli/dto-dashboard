@@ -7,6 +7,8 @@ import currentUser from './currentUser';
 import dashboards from './dashboards';
 import widgets from './widgets';
 import datasets from './datasets';
+import datapoints from './datapoints';
+import organisations from './organisations';
 import { reducer as formReducer } from 'redux-form';
 
 
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   currentUser,
   dashboards,
   widgets,
-  datasets
+  datasets,
+  datapoints,
+  organisations
 });
 
 export default rootReducer;

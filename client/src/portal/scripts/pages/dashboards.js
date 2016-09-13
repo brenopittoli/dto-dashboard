@@ -28,7 +28,6 @@ class DashboardsIndex extends Component {
             ))}
           </tbody>
         </table>
-
       </div>
     )
   }

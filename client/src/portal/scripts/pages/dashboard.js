@@ -26,13 +26,27 @@ class DashboardIndex extends Component {
 
     return (
       <div>
-        <h2>Dashboard: {dashboard.name}</h2>
+        <h2>{dashboard.name}</h2>
 
-        <DashboardForm onSubmit={this.handleSubmit.bind(this)} model={dashboard} />
+        <DashboardForm onSubmit={this.handleSubmit.bind(this)} dashboard={dashboard} widgets={widgets} />
 
-        {widgets.map((w, idx) => {
-          return <li key={idx}><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`}>{w.name}</Link></li>
-        })}
+        <div>
+          <h3>Widgets</h3>
+            <table>
+            <thead>
+            <tr>
+              <td>ID</td><td>Name</td>
+            </tr>
+            </thead>
+            <tbody>
+            {widgets.map((w, idx) => (
+              <tr key={idx}>
+                <td>{w.id}</td><td>{w.name}</td><td><Link to={`/dashboards/${dashboard.id}/widgets/${w.id}`}>Edit</Link></td>
+              </tr>
+            ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     )
   }

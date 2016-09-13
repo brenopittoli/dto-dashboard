@@ -6,7 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 let UpdateDashboardForm = (props) => {
 
   const {
-    handleSubmit, pristine, reset, submitting
+    handleSubmit, pristine, submitting
   } = props;
   return (
     <form onSubmit={handleSubmit}>
@@ -23,9 +23,7 @@ let UpdateDashboardForm = (props) => {
         <Field name="url" component="input" type="url"/>
       </div>
       <div>
-        <button type="submit" disabled={pristine || submitting} >Submit</button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values
-        </button>
+        <button type="submit" disabled={pristine || submitting}>Submit</button>
       </div>
     </form>
   )
@@ -39,7 +37,7 @@ UpdateDashboardForm = reduxForm({
 // read the initialValues prop
 UpdateDashboardForm = connect(
   (state, ownProps) => ({
-    initialValues: ownProps.model
+    initialValues: ownProps.dashboard
   }),
 )(UpdateDashboardForm);
 

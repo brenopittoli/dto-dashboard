@@ -1,11 +1,11 @@
 export default {
   routing: {},
-  currentUser: {},
   app: {},
-  ui: {
-    // formEditDashboard: {}
-  },
+  ui: {},
+  currentUser: {},
   dashboards: [],
   widgets: [],
-  datasets: []
+  datasets: [],
+  datapoints: [],
+  organisations: []
 };
